@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {useState} from 'react'
+import {Routes ,Route} from 'react-router-dom'
+import Lading from './pages/ladingPage/Lading'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Session } from './context/Session';
+import LoginCliente from './pages/clientes/LoginCliente'
+import HomeClientes from './pages/clientes/HomeClientes';
+import './App.css'
 function App() {
+  const [session, setSession] = useState(Session);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <Session.Provider value={[session,setSession]}>
+   <Routes>
+    <Route path='/' element={<Lading/>} />
+    <Route path='/cliente' element={<LoginCliente/>} />
+    <Route path='/homeCliente' element={<HomeClientes/>} />
+    <Route path='/' element />
+    <Route path='/' element />
+    <Route path='/' element />
+    <Route path='/' element />
+    <Route path='/' element />
+    <Route path='/' element />
+    <Route path='/' element />
+    <Route path='/' element />
+    <Route path='/' element />
+    <Route path='/' element />
+
+
+    </Routes>
+
+
+   </Session.Provider>
+   
+   
+   </>
   );
 }
 
