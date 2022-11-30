@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Session } from './context/Session';
 import LoginCliente from './pages/clientes/LoginCliente'
 import HomeClientes from './pages/clientes/HomeClientes';
+import Publicaciones from './components/clientes/Publicaciones'
 import './App.css'
 function App() {
   const [session, setSession] = useState(Session);
@@ -16,7 +17,7 @@ function App() {
     <Route path='/' element={<Lading/>} />
     <Route path='/cliente' element={<LoginCliente/>} />
     <Route path='/homeCliente' element={<HomeClientes/>} />
-    <Route path='/' element />
+    <Route path='/publicaciones' element={<Publicaciones/>}/>
     <Route path='/' element />
     <Route path='/' element />
     <Route path='/' element />

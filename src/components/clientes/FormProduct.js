@@ -2,6 +2,9 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {NavLink} from 'react-router-dom'
 import {useState,useEffect} from 'react'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import Card from 'react-bootstrap/Card';
 import Buscador from './Buscador';
@@ -44,10 +47,7 @@ function FormProduct() {
     
   }, []);
   
-  const muestra = ()=>{
-   const newe =  mostrar.filter(resul => resul.categoria === "Lacteos")
-   console.log(newe)
-  }
+ 
 
   return (
   <>
@@ -61,24 +61,42 @@ function FormProduct() {
       <option value="Carnicos">Carnicos</option>
       <option value="Pastas">Pastas</option>
     </Form.Select> */}
-      <button onClick={muestra}  type='submit'>consulta</button>
+  
       
-   
+        <div className='ms-sm-5 me-sm-4 me-2 py-5 ps-5'>
+        <div className='row w-md-75 ms-auto'>
+          {mostrar.length > 1&&mostrar?.map((item, index) => (
+            <div className='col-12 col-md-6 col-lg-4' key={item._id}>
+              <Card style={{ width: '18rem' }} className=''>
+                <Card.Title className='text-center'>Producto</Card.Title>
+                <div className='container py-3 px-4'>
+                  <Card.Img className='img' variant="top" src={item.imagen} />
+                  <Card.Body>
+               
+                    <Card.Title>{item.nombreProducto}</Card.Title>
+                    <Card.Text>
+                      {"Marca : " + item.marca}
+                     
+
+                    </Card.Text>
+                    <Card.Text>
+                      
+                      {"Categoria : "+item.categoria}
+
+                    </Card.Text>
+                    <Card.Text>
+                      {"Precio X unidad : "+item.precioUnitario}
+                    </Card.Text>
+                    <Button variant="primary">Mas informacion</Button>
+                  </Card.Body>
+                </div>
+              </Card>
+            </div>
+              ))}
+        </div>
+      </div>
     
-   {mostrar.map((item)=>(
-     <Card style={{ width: '18rem' }}>
-     <Card.Img variant="top" src={item.imagen} />
-     <Card.Body>
-       <Card.Title>Producto</Card.Title>
-       <Card.Text>
-        {item.nombreProducto}
-       </Card.Text>
-       <Button variant="primary">Mas informacion</Button>
-     </Card.Body>
-   </Card>
 
-
-   ))}
   
     
 {/* {

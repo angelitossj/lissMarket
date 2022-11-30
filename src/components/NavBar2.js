@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../img/LISS.png";
+import img from "../img/WhatsApp Image 2022-11-30 at 08.41.46.jpeg";
 import { Link } from "react-router-dom";
 
 const NavBar2 = () => {
