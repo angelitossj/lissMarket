@@ -94,7 +94,7 @@ function App() {
           InicioSesionExitosa(data.token)
           navigate('/homeCliente');
         }
-        setState({info})
+        setState({...state,...info,isLoged:true})
         
   
   

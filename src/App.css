@@ -144,9 +144,7 @@ h1{
   margin: auto;
   margin: 115px;
 }
-img{
-  padding: 15px;
-}
+
 
 .formulario{
 border-radius: 8px;
@@ -161,9 +159,8 @@ justify-content: center;
 }
 
 .img{
-width: 270px;
+max-width: 270px;
 height: 300px;
-display: flex;
 
 
 }

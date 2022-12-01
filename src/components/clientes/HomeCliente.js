@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
+import NavBar2 from '../clientes/nav/NavProduct';
 const HomeCliente = () => {
   return (
    <>
@@ -13,6 +14,7 @@ const HomeCliente = () => {
       <div className="bg-light border">{<NabvarCliente/>}</div>
   
     </Stack>
+    <NavBar2/>
    
    <Grid/>
 

@@ -22,10 +22,10 @@ const [filtro,setFiltro]=useState([])
 
     };
 
-    const peticion = await fetch(`http://localhost:3000/productos`, requestOptions)
+    const peticion = await fetch(`http://localhost:3000/product`, requestOptions)
     const respuesta = await peticion.json()
     console.log(respuesta)
-    const Result = state.filter(result=>result.categoria === e.target.value )
+    const Result = state.filter(result=>(result.categoria.toLowerCase()).includes((e.target.value).toLowerCase()) )
   
     setFiltro(Result)
     console.log(Result)
@@ -53,10 +53,8 @@ const [filtro,setFiltro]=useState([])
   //   setState(respuesta?.producto ?? [])
 
   // }
-
-  useEffect(() => {
-    searcher()
-  }, []);
+  
+  
 
   return (
  <>

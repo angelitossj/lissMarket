@@ -2,12 +2,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {NavLink} from 'react-router-dom'
 import {useState,useEffect} from 'react'
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import NavProduct from '../nav/NavProduct'
 
 import Card from 'react-bootstrap/Card';
-import Buscador from './Buscador';
+
 
 function FormProduct() {
     const [mostrar, setMostrar] = useState([])
@@ -32,7 +30,7 @@ function FormProduct() {
       redirect: 'follow'
     };
 
-    const peticion = await fetch(`http://localhost:3000/product`, requestOptions)
+    const peticion = await fetch(`http://localhost:3000/productos?categoria=Panificado`, requestOptions)
     const respuesta = await peticion.json()
   
     setMostrar(respuesta?.producto ?? [])
@@ -51,7 +49,7 @@ function FormProduct() {
 
   return (
   <>
-    <Buscador/>
+   
     {/* <Form.Label>Ingrese un producto Deseado</Form.Label>
     <Form.Select onChange={handleInput} aria-label="Default select example">
       <option >seleccione una categoria</option>
@@ -61,6 +59,7 @@ function FormProduct() {
       <option value="Carnicos">Carnicos</option>
       <option value="Pastas">Pastas</option>
     </Form.Select> */}
+        <NavProduct/>
   
       
         <div className='ms-sm-5 me-sm-4 me-2 py-5 ps-5'>
