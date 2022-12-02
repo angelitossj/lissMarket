@@ -53,7 +53,9 @@ const [filtro,setFiltro]=useState([])
   //   setState(respuesta?.producto ?? [])
 
   // }
-  
+  useEffect(() => {
+  searcher()
+  }, [])
   
 
   return (
@@ -68,7 +70,7 @@ const [filtro,setFiltro]=useState([])
     <div className='ms-sm-5 me-sm-4 me-2 py-5 ps-5'>
         <div className='row w-md-75 ms-auto'>
           {filtro.length > 1&&filtro?.map((item, index) => (
-            <div className='col-12 col-md-6 col-lg-4' key={item._id}>
+            <div className='col-12 col-md-6 col-lg-3 mb-3' key={item._id}>
               <Card className=''>
                 <Card.Title className='text-center'>Producto</Card.Title>
                 <div className='container py-3 px-4'>
@@ -83,7 +85,12 @@ const [filtro,setFiltro]=useState([])
                     </Card.Text>
                     <Card.Text>
                       
-                      {"Categoria : "+item.nombreProducto}
+                      {"Nombre Producto : "+item.nombreProducto}
+
+                    </Card.Text>
+                    <Card.Text>
+                      
+                      {"Categoria : "+item.categoria}
 
                     </Card.Text>
                     <Card.Text>

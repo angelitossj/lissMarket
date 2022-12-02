@@ -32,6 +32,11 @@ const NavBar2 = () => {
                     </Link>
                   </li>
                   <li>
+                    <Link to="/homeCliente" className=" nav-link px-2 text-dark">
+                      Productos
+                    </Link>
+                  </li>
+                  <li>
                     <Link to="/bebidas" className=" nav-link px-2 text-dark">
                       Bebidas
                     </Link>
