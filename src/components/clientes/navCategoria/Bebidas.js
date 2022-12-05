@@ -6,6 +6,7 @@ import img from "../../../assets/logo2.png"
 import swal from "sweetalert";
 
 const Bebidas = () => {
+  const [pedido,setPedido]=useState([])
   const [cart, setCart] = useState([]);
   const [products,setProduct] = useState([])
   const consulta = async () => {
@@ -17,7 +18,7 @@ const Bebidas = () => {
       redirect: 'follow'
     };
 
-    const peticion = await fetch("http://localhost:3000/productos?categoria=Bebida", requestOptions)
+    const peticion = await fetch("http://localhost:3000/productos?categoria=Bebidas", requestOptions)
     const respuesta = await peticion.json()
     console.log(respuesta)
     setProduct(respuesta?.producto ?? [])
@@ -47,10 +48,11 @@ const Bebidas = () => {
     setCart(cart2);
   }
   function increase(item) {
+   
     let x = cart.map((i) => {
       if (item._id === i._id) {
-       
         i = 1;
+        
       }
      
       return i ;
@@ -95,6 +97,7 @@ const Bebidas = () => {
       ...state,
       [e.target.name]: e.target.value,
     });
+    console.log(e.target.value)
   };
 
   const handleFocusChange = (e) => {
@@ -103,6 +106,20 @@ const Bebidas = () => {
       focus: e.target.name,
     });
   };
+
+  const enviarPedido = async ()=>{
+   setPedido({cart})
+   console.log(pedido)
+   
+   
+          
+          
+        
+   
+  
+
+
+  }
 
   const processPayment = () => {
     console.log("number => ", state.number);
@@ -350,7 +367,7 @@ const Bebidas = () => {
                   <td>{i.nombreProducto}</td>
                   <td>{i.precioUnitario}</td>
                   <td>
-                    <button
+                    {/* <button
                       onClick={() => decrease(i)}
                       className="btn btn-danger btn-sm"
                     >
@@ -363,9 +380,10 @@ const Bebidas = () => {
                       size="sm"
                     >
                       +
-                    </button>
+                    </button> */}
+                    <input onChange={(e)=>console.log(e.target.value)} name="cantidad" type='number'></input>
                   </td>
-
+                
                   <td>
                     <button
                       onClick={() => removetocart(i)}
@@ -381,7 +399,7 @@ const Bebidas = () => {
         </div>
         <div className="row">
           <div className="col text-center">
-            <button
+            <button onClick={enviarPedido}
               type="button"
               className="btn btn-danger"
               data-bs-toggle="modal"
