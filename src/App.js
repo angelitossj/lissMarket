@@ -12,6 +12,7 @@ import Panificado from './components/clientes/navCategoria/Panificados'
 import Comestibles from './components/clientes/navCategoria/Comestibles'
 import Carnicos from './components/clientes/navCategoria/Carnicos'
 import Pastas from './components/clientes/navCategoria/Pastas'
+import Pedi from './pages/clientes/Pedi'
 import './App.css'
 function App() {
   const [session, setSession] = useState({isLogged: false});
@@ -30,7 +31,7 @@ function App() {
     <Route path='/comestible' element={<Comestibles/>} />
     <Route path='/pastas' element={<Pastas/>} />
     <Route path='/carnicos' element={<Carnicos/>} />
-    <Route path='/' element />
+    <Route path='/pedidos' element={<Pedi/>} />
     <Route path='/' element />
     <Route path='/' element />
 

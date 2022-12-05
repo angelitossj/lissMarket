@@ -25,9 +25,9 @@ const NavBar2 = () => {
                   />
                 </Link>
 
-                <ul className="ulnav nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                  <li>
-                    <Link to="/" className=" nav-link px-2 text-dark">
+                <ul className="ulnav nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 rancio">
+                  <li >
+                    <Link to="/" className="nav-link px-2 text-dark ranciovich">
                       Inicio
                     </Link>
                   </li>

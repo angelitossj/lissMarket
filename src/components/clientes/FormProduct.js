@@ -1,58 +1,49 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import {NavLink} from 'react-router-dom'
-import {useState,useEffect} from 'react'
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-import Card from 'react-bootstrap/Card';
-import Buscador from './Buscador';
+import Card from "react-bootstrap/Card";
+import Buscador from "./Buscador";
 
 function FormProduct() {
-    const [mostrar, setMostrar] = useState([])
-    
+  const [mostrar, setMostrar] = useState([]);
+
   const handleInput = ({ target }) => {
-      
-      
-      setMostrar({
-          ...mostrar,
-          [target.name]: target.value
-        })
-        console.log(target.value)
-      
-};
+    setMostrar({
+      ...mostrar,
+      [target.name]: target.value,
+    });
+    console.log(target.value);
+  };
   const consulta = async () => {
- 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     var requestOptions = {
-      method: 'GET',
+      method: "GET",
       headers: myHeaders,
-      redirect: 'follow'
+      redirect: "follow",
     };
 
-    const peticion = await fetch(`http://localhost:3000/product`, requestOptions)
-    const respuesta = await peticion.json()
-  
-    setMostrar(respuesta?.producto ?? [])
-    
-    
-    
-  }
+    const peticion = await fetch(
+      `http://localhost:3000/product`,
+      requestOptions
+    );
+    const respuesta = await peticion.json();
+
+    setMostrar(respuesta?.producto ?? []);
+  };
   useEffect(() => {
-    consulta()
-    
-    
-    
+    consulta();
   }, []);
-  
- 
 
   return (
-  <>
-    <Buscador/>
-    {/* <Form.Label>Ingrese un producto Deseado</Form.Label>
+    <>
+      <Buscador />
+      {/* <Form.Label>Ingrese un producto Deseado</Form.Label>
     <Form.Select onChange={handleInput} aria-label="Default select example">
       <option >seleccione una categoria</option>
       <option value="Bebidas">Bebidas</option>
@@ -61,45 +52,33 @@ function FormProduct() {
       <option value="Carnicos">Carnicos</option>
       <option value="Pastas">Pastas</option>
     </Form.Select> */}
-  
-      
-        <div className='ms-sm-5 me-sm-4 me-2 py-5 ps-5'>
-        <div className='row w-md-75 ms-auto'>
-          {mostrar.length > 1&&mostrar?.map((item, index) => (
-            <div className='col-12 col-md-6 col-lg-3 mb-3' key={item._id}>
-              <Card className=''>
-                <Card.Title className='text-center'>Producto</Card.Title>
-                <div className='container py-3 px-4'>
-                  <Card.Img className='img' variant="top" src={item.imagen} />
-                  <Card.Body>
-               
-                    <Card.Title>{item.nombreProducto}</Card.Title>
-                    <Card.Text>
-                      {"Marca : " + item.marca}
-                     
 
-                    </Card.Text>
-                    <Card.Text>
-                      
-                      {"Categoria : "+item.categoria}
-
-                    </Card.Text>
-                    <Card.Text>
-                      {"Precio X unidad : "+item.precioUnitario}
-                    </Card.Text>
-                    <Button variant="primary">Mas informacion</Button>
-                  </Card.Body>
-                </div>
-              </Card>
-            </div>
-              ))}
+      <div className="ms-sm-6 me-sm-4 me-2 py-5 ps-5">
+        <div className="row w-md-30 ms-auto">
+          {mostrar.length > 1 &&
+            mostrar?.map((item, index) => (
+              <div className="col-12 col-md-6 col-lg-3 mb-3" key={item._id}>
+                <Card className="">
+                  <Card.Title className="text-center">Producto</Card.Title>
+                  <div className="container py-3 px-4">
+                    <Card.Img className="img" variant="top" src={item.imagen} />
+                    <Card.Body>
+                      <Card.Title>{item.nombreProducto}</Card.Title>
+                      <Card.Text>{"Marca : " + item.marca}</Card.Text>
+                      <Card.Text>{"Categoria : " + item.categoria}</Card.Text>
+                      <Card.Text>
+                        {"Precio X unidad : " + item.precioUnitario}
+                      </Card.Text>
+                      <Button variant="primary">Mas informacion</Button>
+                    </Card.Body>
+                  </div>
+                </Card>
+              </div>
+            ))}
         </div>
       </div>
-    
 
-  
-    
-{/* {
+      {/* {
 
   ( mostrar?.length <= 1 && mostrar)
   ? (
@@ -118,8 +97,7 @@ function FormProduct() {
   )
 
 } */}
-  </>
-    
+    </>
   );
 }
 

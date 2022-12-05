@@ -1,11 +1,11 @@
 import { React, useEffect, useState } from "react";
-import NavBar2 from "../nav/NavProduct";
-import Footer from "../../Footer";
+import NavBar2 from "../../components/clientes/nav/NavProduct";
+import Footer from "../../components/Footer";
 
-import img from "../../../assets/logo2.png"
+import img from "../../assets/logo2.png"
 import swal from "sweetalert";
 
-const Bebidas = () => {
+const Pedidos = () => {
   const [cart, setCart] = useState([]);
   const [products,setProduct] = useState([])
   const consulta = async () => {
@@ -17,11 +17,11 @@ const Bebidas = () => {
       redirect: 'follow'
     };
 
-    const peticion = await fetch("http://localhost:3000/productos?categoria=Bebida", requestOptions)
+    const peticion = await fetch("http://localhost:3000/product", requestOptions)
     const respuesta = await peticion.json()
     console.log(respuesta)
     setProduct(respuesta?.producto ?? [])
-  
+    console.log(products)
     
   }
 
@@ -31,11 +31,10 @@ const Bebidas = () => {
     products.map((product) => {
       if (product._id === item._id) {
         product.cart = true;
-     
+        console.log(product)
       }
-      setCart(cart2);
-      console.log(cart)
     });
+    setCart(cart2);
   }
   function removetocart(item) {
     let cart2 = cart.filter((i) => i._id !== item._id);
@@ -70,7 +69,7 @@ const Bebidas = () => {
   function total() {
     let x = 0;
     cart.map((i) => {
-      x += i.precioUnitario * i.quantity;
+      x += i.price * i.quantity;
     });
     return x;
   }
@@ -400,4 +399,4 @@ const Bebidas = () => {
     </div>
   );
 };
-export default Bebidas;
+export default Pedidos;

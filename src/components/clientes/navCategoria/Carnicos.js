@@ -30,7 +30,7 @@ function FormProduct() {
       redirect: 'follow'
     };
 
-    const peticion = await fetch(`http://localhost:3000/productos?categoria=Carnicos`, requestOptions)
+    const peticion = await fetch(`http://localhost:3000/productos?categoria=Carnico`, requestOptions)
     const respuesta = await peticion.json()
   
     setMostrar(respuesta?.producto ?? [])

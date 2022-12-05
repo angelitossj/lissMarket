@@ -158,9 +158,34 @@ justify-content: center;
 
 }
 
+
+.blanco{
+  color: rgb(43, 71, 231);
+  font-family:cursive ;
+  font-size: 65px;
+}
+.blanco:hover{
+  color: #c0c762;
+}
+.rancio{
+  color: black;
+  font-family: cursive;
+  font-size: x-large;
+}
+.rancia{
+  font-family: cursive;
+  font-size: 30px;
+}
+
+.liss{
+  font-size: 70px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 .img{
-max-width: 270px;
-height: 300px;
+margin: auto 40px ;
+width: 300px;
+height: 270px;
+border: solid darkcyan;
 
 
 }

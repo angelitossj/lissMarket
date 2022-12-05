@@ -16,7 +16,10 @@ const Footer = () => {
               <div className="col-md pr-md-5 mb-4 mb-md-0">
                 <h2>Sobre Nosotros</h2>
                 <p className="mb-4">
-                 Somos una compañia enfocada en al ambito de ventas de productos , traemos una nueva forma de generar sus compras para su comercio, Unase a Nosotros y gestione sus compras con nuestra interfaz  
+                  Somos una compañia enfocada en al ambito de ventas de
+                  productos , traemos una nueva forma de generar sus compras
+                  para su comercio, Unase a Nosotros y gestione sus compras con
+                  nuestra interfaz
                 </p>
                 <ul className="list-unstyled quick-info mb-4">
                   <li>

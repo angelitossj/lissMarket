@@ -30,11 +30,11 @@ function FormProduct() {
       redirect: 'follow'
     };
 
-    const peticion = await fetch(`http://localhost:3000/productos?categoria=Comestibles`, requestOptions)
+    const peticion = await fetch(`http://localhost:3000/productos?categoria=Comestíble`, requestOptions)
     const respuesta = await peticion.json()
   
     setMostrar(respuesta?.producto ?? [])
-    
+    console.log(mostrar)  
     
     
   }
@@ -65,11 +65,11 @@ function FormProduct() {
         <div className='ms-sm-5 me-sm-4 me-2 py-5 ps-5'>
         <div className='row w-md-75 ms-auto'>
           {mostrar.length > 1&&mostrar?.map((item, index) => (
-            <div className='col-12 col-md-6 col-lg-3 mb-3' key={item._id}>
+            <div className='col-12 col-md-6 col-lg-3 mb-3' key={index}>
               <Card className=''>
                 <Card.Title className='text-center'>Producto</Card.Title>
                 <div className='container py-3 px-4'>
-                  <Card.Img className='img' variant="top" src={item.imagen} />
+                  <Card.Img className='img' variant="top" src={item.imagen}  />
                   <Card.Body>
                
                     <Card.Title>{item.nombreProducto}</Card.Title>

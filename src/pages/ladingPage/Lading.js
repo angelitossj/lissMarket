@@ -11,9 +11,7 @@ function Home() {
   return (
    <>
   <NavBar2/>
-  <h2 className="textofer display-5 text-center">
-              ¡LissMarket!
-            </h2>
+
 
    <Main/>
    <Info/>

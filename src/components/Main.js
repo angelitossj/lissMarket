@@ -44,9 +44,13 @@ const registro = ()=>setMostrar([<Registro/>])
     <>
     {mostrar}
 <div className="px-4 pt-5 my-5 text-center border-bottom">
-    <h1 className="display-4 fw-bold">Bienvenido a Nuestra Pagina</h1>
+  
+<h2 className="textofer display-5 text-center liss">
+              ¡LissMarket!
+            </h2>
+    <h1  className="display-4 fw-bold blanco">Bienvenido a Nuestra Pagina</h1>
     <div className="col-lg-6 mx-auto">
-      <p className="lead mb-4">Queremos Brindarle la mejor atencion posible y que pueda disfrutar de la interacion con nosotros pero para ello es necesario que Usted forme parte de nosotros y se registre a nuetra Pagina</p>
+      <p className="lead mb-4 rancia">Queremos Brindarle la mejor atencion posible y que pueda disfrutar de la interacion con nosotros pero para ello es necesario que Usted forme parte de nosotros y se registre a nuetra Pagina</p>
       <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
         <button onClick={muestra} type="submit" className="btn btn-primary btn-lg px-4 me-sm-3">Cliente</button>
         <button type="submit" onClick={registro} className="btn btn-outline-danger btn-lg px-4">Proveedor</button>
