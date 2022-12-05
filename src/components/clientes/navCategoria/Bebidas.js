@@ -72,8 +72,10 @@ const Bebidas = () => {
   function total() {
     let x = 0;
     cart.map((i) => {
-      x += i.precioUnitario * i.quantity;
+      x += Number(i.precioUnitario) ;
     });
+    // if (x){alert('$' + x + " a pagar")}
+    
     return x;
   }
   const pagoCompletado = () => {
@@ -343,7 +345,12 @@ const Bebidas = () => {
                       
 <div class="cho-container"></div>
 
-
+<div className="col text-center">
+                <h1 className="modal-title" id="exampleModalLabel">
+                  Carrito
+                </h1>
+                <h2>TOTAL:$ {total()}</h2>
+              </div>
 
         <div className="row mt-3">
           <table className="table  text-center">
@@ -396,6 +403,7 @@ const Bebidas = () => {
               ))}
             </tbody>
           </table>
+          
         </div>
         <div className="row">
           <div className="col text-center">
@@ -407,6 +415,15 @@ const Bebidas = () => {
             >
               Completar Pago
             </button>
+            <button onClick={total}
+              type="button"
+              className="btn btn-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#modalPedidos"
+            >
+              total Pago
+            </button>
+            
             <br />
           </div>
           <br />
