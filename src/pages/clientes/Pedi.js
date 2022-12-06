@@ -126,7 +126,7 @@ const Pedidos = () => {
       <div
         className="modal fade"
         id="modalTarjeta"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -217,7 +217,7 @@ const Pedidos = () => {
       <div
         className="modal fade"
         id="modalPedidos"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -323,7 +323,7 @@ const Pedidos = () => {
 
 
                       
-<div class="cho-container"></div>
+<div className="cho-container"></div>
 
 
 

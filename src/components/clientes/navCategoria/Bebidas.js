@@ -4,7 +4,7 @@ import Footer from "../../Footer";
 
 import img from "../../../assets/logo2.png"
 import swal from "sweetalert";
-
+import MercadoPago from "../../MercadoPago";
 const Bebidas = () => {
   const [pedido,setPedido]=useState({})
   const [cart, setCart] = useState([]);
@@ -178,7 +178,7 @@ const Bebidas = () => {
       <div
         className="modal fade"
         id="modalTarjeta"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -269,7 +269,7 @@ const Bebidas = () => {
       <div
         className="modal fade"
         id="modalPedidos"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -343,7 +343,7 @@ const Bebidas = () => {
         <br />
         <div className="row justify-content-center">
           {products.map((item) => (
-            <div className="col-3" key={item.id}>
+            <div className="col-3" key={item._id}>
               <div className="card">
                 <img alt="" src={item.imagen} className="card-img-top img-height" />
                 <div className="card-body">
@@ -375,7 +375,7 @@ const Bebidas = () => {
 
 
                       
-<div class="cho-container"></div>
+<div className="cho-container"></div>
 
 <div className="col text-center">
                 <h1 className="modal-title" id="exampleModalLabel">
@@ -455,6 +455,7 @@ const Bebidas = () => {
             >
               total Pago
             </button>
+            <MercadoPago/>
             
             <br />
           </div>
