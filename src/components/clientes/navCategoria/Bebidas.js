@@ -6,7 +6,7 @@ import img from "../../../assets/logo2.png"
 import swal from "sweetalert";
 
 const Bebidas = () => {
-  const [pedido,setPedido]=useState([])
+  const [pedido,setPedido]=useState({})
   const [cart, setCart] = useState([]);
   const [products,setProduct] = useState([])
   const consulta = async () => {
@@ -110,18 +110,50 @@ const Bebidas = () => {
   };
 
   const enviarPedido = async ()=>{
-   setPedido({cart})
-   console.log(pedido)
-   
-   
-          
-          
-        
-   
   
+    
+    
+   setPedido({cart})
+  const pedidoArray = pedido.cart ?? []
+   console.log("carrito:" + cart)
+
+
+
+
+   let nuevoArray = {}
+   
+    nuevoArray.pedidos =(await pedidoArray).map(e=>{
+      return {idProveedor:e.idProveedor,idProducto:e._id,cantidad:e.precioUnitario,nombreProducto: e.nombreProducto}
+    })
+    console.log(nuevoArray)
+          
+    /* const pedidoss = {productos: [
+      {idProducto: 2, idProveedor: 5, cantidad: 5, img: ""},
+       {idProducto: 6, idProveedor: 5, cantidad: 2, img: ""},
+       
+      ]} */
+  
+   var myHeaders = new Headers();
+   myHeaders.append("Content-Type", "application/json");
+   
+   var raw = JSON.stringify(nuevoArray);
+   console.log(raw)
+   
+   var requestOptions = {
+     method: 'POST',
+     headers: myHeaders,
+     body: raw,
+     redirect: 'follow'
+   };
+
+   const peticion = await fetch ("http://localhost:3000/publicaciones",requestOptions)
+   const data = await peticion.json()
+   console.log(data)
 
 
   }
+ 
+
 
   const processPayment = () => {
     console.log("number => ", state.number);
