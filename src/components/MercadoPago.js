@@ -19,11 +19,11 @@ const MercadoPagoPage = () => {
     //     }
     //   });
 
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://sdk.mercadopago.com/js/v2';
-    const form = document.getElementById(idForm);
-    form.appendChild(script);
+    // const script = document.createElement('script');
+    // script.type = 'text/javascript';
+    // script.src = 'https://sdk.mercadopago.com/js/v2';
+    // const form = document.getElementById(idForm);
+    // form.appendChild(script);
 
   return (
     <>

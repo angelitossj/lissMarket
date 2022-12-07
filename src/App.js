@@ -13,7 +13,10 @@ import Comestibles from './components/clientes/navCategoria/Comestibles'
 import Carnicos from './components/clientes/navCategoria/Carnicos'
 import Pastas from './components/clientes/navCategoria/Pastas'
 import Pedi from './pages/clientes/Pedi'
+import SesionProveedor from './pages/proveedores/SesionProveedor';
 import './App.css'
+import { HomeProveedor } from './components/proveedores/HomeProveedor';
+import Reports from './pages/proveedores/Reports';
 function App() {
   const [session, setSession] = useState({isLogged: false});
 
@@ -32,8 +35,9 @@ function App() {
     <Route path='/pastas' element={<Pastas/>} />
     <Route path='/carnicos' element={<Carnicos/>} />
     <Route path='/pedidos' element={<Pedi/>} />
-    <Route path='/' element />
-    <Route path='/' element />
+    <Route path='/proveedor' element={<SesionProveedor/>} />
+    <Route path='/homeProveedor' element={<HomeProveedor/>} />
+    <Route path='/reportes' element={<Reports/>} />
 
 
     </Routes>

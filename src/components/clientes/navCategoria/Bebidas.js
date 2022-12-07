@@ -460,6 +460,7 @@ const Bebidas = () => {
            
             
             <br />
+            <MercadoPago/>
           </div>
           <br />
         </div>
