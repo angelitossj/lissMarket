@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
-
+import img from '../../assets/logo.png'
 const Registro = () => {
   
 const opciones={
@@ -56,7 +56,7 @@ navigate('/proveedor')
             <div className="mb-4">
                 <img
                 className=""
-                src=''
+                src={img}
                 alt=""
                 width="100"
                 height="100"
