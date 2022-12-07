@@ -4,9 +4,9 @@ import Footer from "../../Footer";
 
 import img from "../../../assets/logo2.png"
 import swal from "sweetalert";
-
+import MercadoPago from "../../MercadoPago";
 const Bebidas = () => {
-  const [pedido,setPedido]=useState([])
+  const [pedido,setPedido]=useState({})
   const [cart, setCart] = useState([]);
   const [products,setProduct] = useState([])
   const consulta = async () => {
@@ -110,18 +110,50 @@ const Bebidas = () => {
   };
 
   const enviarPedido = async ()=>{
-   setPedido({cart})
-   console.log(pedido)
-   
-   
-          
-          
-        
-   
   
+    
+    
+   setPedido({cart})
+  const pedidoArray = pedido.cart ?? []
+   console.log("carrito:" + cart)
+
+
+
+
+   let nuevoArray = {}
+   
+    nuevoArray.pedidos =(await pedidoArray).map(e=>{
+      return {idProveedor:e.idProveedor,idProducto:e._id,cantidad:e.precioUnitario,nombreProducto: e.nombreProducto}
+    })
+    console.log(nuevoArray)
+          
+    /* const pedidoss = {productos: [
+      {idProducto: 2, idProveedor: 5, cantidad: 5, img: ""},
+       {idProducto: 6, idProveedor: 5, cantidad: 2, img: ""},
+       
+      ]} */
+  
+   var myHeaders = new Headers();
+   myHeaders.append("Content-Type", "application/json");
+   
+   var raw = JSON.stringify(nuevoArray);
+   console.log(raw)
+   
+   var requestOptions = {
+     method: 'POST',
+     headers: myHeaders,
+     body: raw,
+     redirect: 'follow'
+   };
+
+   const peticion = await fetch ("http://localhost:3000/publicaciones",requestOptions)
+   const data = await peticion.json()
+   console.log(data)
 
 
   }
+ 
+
 
   const processPayment = () => {
     console.log("number => ", state.number);
@@ -146,7 +178,7 @@ const Bebidas = () => {
       <div
         className="modal fade"
         id="modalTarjeta"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -237,7 +269,7 @@ const Bebidas = () => {
       <div
         className="modal fade"
         id="modalPedidos"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -306,21 +338,22 @@ const Bebidas = () => {
       <NavBar2 />
       <div className="container mt-2">
         <div className="col text-center">
-          <h1>Realizar Pedidos</h1>
+        <div  class="head2">Realizar Pedidos</div>
+            <p class="bdr2"></p>
         </div>
         <br />
         <div className="row justify-content-center">
           {products.map((item) => (
-            <div className="col-3" key={item.id}>
-              <div className="card">
-                <img alt="" src={item.imagen} className="card-img-top img-height" />
+            <div className="col-sm-12  col-md-4 col-lg-3" key={item._id}>
+              <div className="separacionBebidas card">
+                <img alt="" src={item.imagen} className="tamañoCardBebidas card-img-top img-height" />
                 <div className="card-body">
                   <h6 className="card-title">
                     {item.nombreProducto} - $ {item.precioUnitario}
                   </h6>
                  
                     {item.cart !== true && <button
-                      className="btn btn-primary"
+                      className="botoncitoBebidas btn btn-primary"
                       onClick={() => addtocart(item)}
                       
                     >
@@ -343,7 +376,7 @@ const Bebidas = () => {
 
 
                       
-<div class="cho-container"></div>
+<div className="cho-container"></div>
 
 <div className="col text-center">
                 <h1 className="modal-title" id="exampleModalLabel">
@@ -357,11 +390,11 @@ const Bebidas = () => {
             <thead>
               <tr>
                 <th scope="col"></th>
-                <th scope="col">Product</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Remove</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Nombre del producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Eliminar</th>
               </tr>
             </thead>
             <tbody>
@@ -396,7 +429,7 @@ const Bebidas = () => {
                       onClick={() => removetocart(i)}
                       className="btn btn-danger"
                     >
-                      Remove
+                      Eliminar
                     </button>
                   </td>
                 </tr>
@@ -423,6 +456,7 @@ const Bebidas = () => {
             >
               total Pago
             </button>
+           
             
             <br />
           </div>

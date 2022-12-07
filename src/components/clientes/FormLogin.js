@@ -129,21 +129,21 @@ function App() {
           <span className="h1 fw-bold mb-0">LissMarket</span>
         </div>
 
-        <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>Sign into your account</h5>
+        <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>Acceda a su cuenta</h5>
 
           <form onSubmit={handleSubmit}>
           <MDBInput onChange={handleInput} wrapperClass='mb-4' label='Email address' name='usuario' id='formControlLg' type='email' size="lg"/>
           <MDBInput onChange={handleInput} wrapperClass='mb-4' label='Password' id='formControlLg' name='password' type='password' size="lg"/>
 
-          <button NavLink=''  className="w-100 btn btn-lg btn-primary" onClick={handleSubmit} type="submit">Sign in</button>
+          <button NavLink=''  className="w-100 btn btn-lg btn-primary" onClick={handleSubmit} type="submit">Iniciar sesión</button>
 
           </form>
-        <a className="small text-muted" href="#!">Forgot password?</a>
-        <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <a href="#!" style={{color: '#393f81'}}>Register here</a></p>
+        <a className="small text-muted" href="#!">Olvido su contraseña?</a>
+        <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>No tiene cuenta? <a href="#!" style={{color: '#393f81'}}>Registrarse</a></p>
 
         <div className='d-flex flex-row justify-content-start'>
-          <a href="#!" className="small text-muted me-1">Terms of use.</a>
-          <a href="#!" className="small text-muted">Privacy policy</a>
+          <a href="#!" className="small text-muted me-1">Condiciones de uso.</a>
+          <a href="#!" className="small text-muted">Política de privacidad</a>
         </div>
 
       </MDBCardBody>

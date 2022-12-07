@@ -28,7 +28,7 @@ const NavBar2 = () => {
                 <ul className="ulnav nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li>
                     <Link to="/homeCliente" className=" nav-link px-2 text-dark">
-                      Home
+                      Inicio
                     </Link>
                   </li>
                   <li>
@@ -58,7 +58,7 @@ const NavBar2 = () => {
                   </li>
                   <li>
                     <Link to="/pastas" className=" nav-link px-2 text-dark">
-                      Pastas
+                      Enlatados
                     </Link>
                   </li>
                   <li>

@@ -39,7 +39,7 @@ function Navbar() {
               );
             })}
              <div className="text-end">
-                  <button onClick={()=>{setSidebar(null)}} type="button" className="cerrarsesion btn btn-danger">
+                  <button onClick={()=>{setSidebar(null)}} type="button" className="cerrarsesion2 btn btn-danger">
                     Cerrar Sesion
                   </button>
                 </div>

@@ -4,8 +4,9 @@ import Footer from "../../components/Footer";
 
 import img from "../../assets/logo2.png"
 import swal from "sweetalert";
-
-const Pedidos = () => {
+import MercadoPago from "../../components/MercadoPago";
+const Bebidas = () => {
+  const [pedido,setPedido]=useState({})
   const [cart, setCart] = useState([]);
   const [products,setProduct] = useState([])
   const consulta = async () => {
@@ -21,7 +22,7 @@ const Pedidos = () => {
     const respuesta = await peticion.json()
     console.log(respuesta)
     setProduct(respuesta?.producto ?? [])
-    console.log(products)
+  
     
   }
 
@@ -31,10 +32,11 @@ const Pedidos = () => {
     products.map((product) => {
       if (product._id === item._id) {
         product.cart = true;
-        console.log(product)
+     
       }
+      setCart(cart2);
+      console.log(cart)
     });
-    setCart(cart2);
   }
   function removetocart(item) {
     let cart2 = cart.filter((i) => i._id !== item._id);
@@ -46,10 +48,11 @@ const Pedidos = () => {
     setCart(cart2);
   }
   function increase(item) {
+   
     let x = cart.map((i) => {
       if (item._id === i._id) {
-       
         i = 1;
+        
       }
      
       return i ;
@@ -69,8 +72,10 @@ const Pedidos = () => {
   function total() {
     let x = 0;
     cart.map((i) => {
-      x += i.price * i.quantity;
+      x += Number(i.precioUnitario) ;
     });
+    // if (x){alert('$' + x + " a pagar")}
+    
     return x;
   }
   const pagoCompletado = () => {
@@ -94,6 +99,7 @@ const Pedidos = () => {
       ...state,
       [e.target.name]: e.target.value,
     });
+    console.log(e.target.value)
   };
 
   const handleFocusChange = (e) => {
@@ -102,6 +108,52 @@ const Pedidos = () => {
       focus: e.target.name,
     });
   };
+
+  const enviarPedido = async ()=>{
+  
+    
+    
+   setPedido({cart})
+  const pedidoArray = pedido.cart ?? []
+   console.log("carrito:" + cart)
+
+
+
+
+   let nuevoArray = {}
+   
+    nuevoArray.pedidos =(await pedidoArray).map(e=>{
+      return {idProveedor:e.idProveedor,idProducto:e._id,cantidad:e.precioUnitario,nombreProducto: e.nombreProducto}
+    })
+    console.log(nuevoArray)
+          
+    /* const pedidoss = {productos: [
+      {idProducto: 2, idProveedor: 5, cantidad: 5, img: ""},
+       {idProducto: 6, idProveedor: 5, cantidad: 2, img: ""},
+       
+      ]} */
+  
+   var myHeaders = new Headers();
+   myHeaders.append("Content-Type", "application/json");
+   
+   var raw = JSON.stringify(nuevoArray);
+   console.log(raw)
+   
+   var requestOptions = {
+     method: 'POST',
+     headers: myHeaders,
+     body: raw,
+     redirect: 'follow'
+   };
+
+   const peticion = await fetch ("http://localhost:3000/publicaciones",requestOptions)
+   const data = await peticion.json()
+   console.log(data)
+
+
+  }
+ 
+
 
   const processPayment = () => {
     console.log("number => ", state.number);
@@ -126,7 +178,7 @@ const Pedidos = () => {
       <div
         className="modal fade"
         id="modalTarjeta"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -217,7 +269,7 @@ const Pedidos = () => {
       <div
         className="modal fade"
         id="modalPedidos"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -286,21 +338,22 @@ const Pedidos = () => {
       <NavBar2 />
       <div className="container mt-2">
         <div className="col text-center">
-          <h1>Realizar Pedidos</h1>
+        <div  class="head2">Realizar Pedidos</div>
+            <p class="bdr2"></p>
         </div>
         <br />
         <div className="row justify-content-center">
           {products.map((item) => (
-            <div className="col-3" key={item.id}>
-              <div className="card">
-                <img alt="" src={item.imagen} className="card-img-top img-height" />
+            <div className="col-sm-12  col-md-4 col-lg-3" key={item._id}>
+              <div className="separacionBebidas card">
+                <img alt="" src={item.imagen} className="tamañoCardBebidas card-img-top img-height" />
                 <div className="card-body">
                   <h6 className="card-title">
                     {item.nombreProducto} - $ {item.precioUnitario}
                   </h6>
                  
                     {item.cart !== true && <button
-                      className="btn btn-primary"
+                      className="botoncitoBebidas btn btn-primary"
                       onClick={() => addtocart(item)}
                       
                     >
@@ -323,20 +376,25 @@ const Pedidos = () => {
 
 
                       
-<div class="cho-container"></div>
+<div className="cho-container"></div>
 
-
+<div className="col text-center">
+                <h1 className="modal-title" id="exampleModalLabel">
+                  Carrito
+                </h1>
+                <h2>TOTAL:$ {total()}</h2>
+              </div>
 
         <div className="row mt-3">
           <table className="table  text-center">
             <thead>
               <tr>
                 <th scope="col"></th>
-                <th scope="col">Product</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Remove</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Nombre del producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Eliminar</th>
               </tr>
             </thead>
             <tbody>
@@ -349,7 +407,7 @@ const Pedidos = () => {
                   <td>{i.nombreProducto}</td>
                   <td>{i.precioUnitario}</td>
                   <td>
-                    <button
+                    {/* <button
                       onClick={() => decrease(i)}
                       className="btn btn-danger btn-sm"
                     >
@@ -362,25 +420,27 @@ const Pedidos = () => {
                       size="sm"
                     >
                       +
-                    </button>
+                    </button> */}
+                    <input onChange={(e)=>console.log(e.target.value)} name="cantidad" type='number'></input>
                   </td>
-
+                
                   <td>
                     <button
                       onClick={() => removetocart(i)}
                       className="btn btn-danger"
                     >
-                      Remove
+                      Eliminar
                     </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          
         </div>
         <div className="row">
           <div className="col text-center">
-            <button
+            <button onClick={enviarPedido}
               type="button"
               className="btn btn-danger"
               data-bs-toggle="modal"
@@ -388,6 +448,16 @@ const Pedidos = () => {
             >
               Completar Pago
             </button>
+            <button onClick={total}
+              type="button"
+              className="btn btn-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#modalPedidos"
+            >
+              total Pago
+            </button>
+           
+            
             <br />
           </div>
           <br />
@@ -399,4 +469,4 @@ const Pedidos = () => {
     </div>
   );
 };
-export default Pedidos;
+export default Bebidas;

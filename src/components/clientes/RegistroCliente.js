@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
+import img from '../../assets/logo.png'
 
 const Registro = () => {
   
@@ -52,11 +53,9 @@ navigate('/productos')
           <form className="text-center" >
             <div className="mb-4">
                 <img
-                className=""
-                src=''
+                className="imgForm"
+                src={img}
                 alt=""
-                width="100"
-                height="100"
                 />
             </div>
             <h1 className="h3 mb-3 fw-normal text-center"><strong>Formulario Cliente</strong></h1>
@@ -170,6 +169,7 @@ navigate('/productos')
             <p className="mt-5 mb-3 text-center">© 2021 - Tecnicatura en Desarrollo de Software</p>
           </form>
       </main>
+      
     
     
     </>

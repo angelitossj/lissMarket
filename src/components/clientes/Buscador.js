@@ -64,7 +64,7 @@ const [filtro,setFiltro]=useState([])
     <div className="input-group mb-3 shadow-sm p-3 mb-5 bg-body rounded">
         <span className="input-group-text" id="inputGroup-sizing-default">Buscador</span>
         <input onChange={searcher}  type= "text" placeholder="Ingresa un Nombre..." className="form-control "/>
-        <button onClick={searcher} type='submit'>enviar</button>
+        
       </div>
     </Stack>
     <div className='ms-sm-5 me-sm-4 me-2 py-5 ps-5'>

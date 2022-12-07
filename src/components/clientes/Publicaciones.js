@@ -139,12 +139,12 @@ function App() {
           <button NavLink=''  className="w-100 btn btn-lg btn-primary" onClick={handleSubmit} type="submit">Realizar Publicacion</button>
 
           </form>
-        <a className="small text-muted" href="#!">Forgot password?</a>
-        <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <a href="#!" style={{color: '#393f81'}}>Register here</a></p>
+        <a className="small text-muted" href="#!">Olvido su contraseña?</a>
+        <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>No tiene cuenta? <a href="#!" style={{color: '#393f81'}}>Registrarse</a></p>
 
         <div className='d-flex flex-row justify-content-start'>
-          <a href="#!" className="small text-muted me-1">Terms of use.</a>
-          <a href="#!" className="small text-muted">Privacy policy</a>
+          <a href="#!" className="small text-muted me-1">Condiciones de uso.</a>
+          <a href="#!" className="small text-muted">Política de privacidad</a>
         </div>
 
       </MDBCardBody>

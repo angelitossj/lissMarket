@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 // import './product.css'
 
-import img from '../img/como-ser-comerciante.jpg'
+import img from '../assets/imgInfo.jpg'
 
 import Registro from '../components/proveedores/RegistroProveedor'
 import Login from './clientes/formularios/LoginCliente'
@@ -43,22 +43,22 @@ const registro = ()=>setMostrar([<Registro/>])
   return (
     <>
     {mostrar}
-<div className="px-4 pt-5 my-5 text-center border-bottom">
-  
-<h2 className="textofer display-5 text-center liss">
+<div className="px-4 my-5 text-center border-bottom">
+<h1  className="textBienvenidos display-4 fw-bold">Bienvenidos a <span className="textofer display-5 liss">
               ¡LissMarket!
-            </h2>
-    <h1  className="display-4 fw-bold blanco">Bienvenido a Nuestra Pagina</h1>
+            </span></h1>
+  
+
     <div className="col-lg-6 mx-auto">
       <p className="lead mb-4 rancia">Queremos Brindarle la mejor atencion posible y que pueda disfrutar de la interacion con nosotros pero para ello es necesario que Usted forme parte de nosotros y se registre a nuetra Pagina</p>
       <div className="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <button onClick={muestra} type="submit" className="btn btn-primary btn-lg px-4 me-sm-3">Cliente</button>
+        <button onClick={muestra} type="submit" className="btn btn-danger btn-lg px-4 me-sm-3">Cliente</button>
         <button type="submit" onClick={registro} className="btn btn-outline-danger btn-lg px-4">Proveedor</button>
       </div>
     </div>
-    <div className="overflow-hidden" >
-      <div className="container px-5">
-        <img src={img} className="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy"/>
+    <div class="overflow-hidden">
+      <div class="container px-5">
+        <img src={img}  class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example" width="700" height="500" loading="lazy"/>
       </div>
     </div>
   </div>
