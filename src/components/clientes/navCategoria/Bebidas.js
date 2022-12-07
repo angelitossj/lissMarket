@@ -6,7 +6,7 @@ import img from "../../../assets/logo2.png"
 import swal from "sweetalert";
 import MercadoPago from "../../MercadoPago";
 const Bebidas = () => {
-  const [pedido,setPedido]=useState({})
+  const [pedido,setPedido]=useState()
   const [cart, setCart] = useState([]);
   const [products,setProduct] = useState([])
   const consulta = async () => {
@@ -123,7 +123,7 @@ const Bebidas = () => {
    let nuevoArray = {}
    
     nuevoArray.pedidos =(await pedidoArray).map(e=>{
-      return {idProveedor:e.idProveedor,idProducto:e._id,cantidad:e.precioUnitario,nombreProducto: e.nombreProducto}
+      return {idProveedor:e.idProveedor,idProducto:e._id,cantidad:e.precioUnitario,nombreProducto: e.nombreProducto,idCliente:localStorage.getItem('rstoken')}
     })
     console.log(nuevoArray)
           
@@ -143,7 +143,8 @@ const Bebidas = () => {
      method: 'POST',
      headers: myHeaders,
      body: raw,
-     redirect: 'follow'
+     redirect: 'follow',
+     Authorization:localStorage.getItem('rstoken')
    };
 
    const peticion = await fetch ("http://localhost:3000/publicaciones",requestOptions)
@@ -344,15 +345,9 @@ const Bebidas = () => {
         <br />
         <div className="row justify-content-center">
           {products.map((item) => (
-<<<<<<< HEAD
             <div className="col-sm-12  col-md-4 col-lg-3" key={item._id}>
               <div className="separacionBebidas card">
                 <img alt="" src={item.imagen} className="tamañoCardBebidas card-img-top img-height" />
-=======
-            <div className="col-3" key={item._id}>
-              <div className="card">
-                <img alt="" src={item.imagen} className="card-img-top img-height" />
->>>>>>> cdc347a9a713c8b2b26f105d0565bca02ff5cc3a
                 <div className="card-body">
                   <h6 className="card-title">
                     {item.nombreProducto} - $ {item.precioUnitario}
@@ -411,7 +406,7 @@ const Bebidas = () => {
                     <img alt="" src={i.imagen} style={{ width: "4rem" }} />
                   </th>
                   <td>{i.nombreProducto}</td>
-                  <td>{i.precioUnitario}</td>
+                  <td>{" $ " + i.precioUnitario}</td>
                   <td>
                     {/* <button
                       onClick={() => decrease(i)}
@@ -462,11 +457,7 @@ const Bebidas = () => {
             >
               total Pago
             </button>
-<<<<<<< HEAD
            
-=======
-            <MercadoPago/>
->>>>>>> cdc347a9a713c8b2b26f105d0565bca02ff5cc3a
             
             <br />
           </div>

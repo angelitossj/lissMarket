@@ -405,7 +405,7 @@ const Bebidas = () => {
                     <img alt="" src={i.imagen} style={{ width: "4rem" }} />
                   </th>
                   <td>{i.nombreProducto}</td>
-                  <td>{i.precioUnitario}</td>
+                  <td>{" $ " + i.precioUnitario}</td>
                   <td>
                     {/* <button
                       onClick={() => decrease(i)}
