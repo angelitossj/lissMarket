@@ -377,6 +377,10 @@ const Bebidas = () => {
 
                       
 <div className="cho-container"></div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> cdc347a9a713c8b2b26f105d0565bca02ff5cc3a
 
 <div className="col text-center">
                 <h1 className="modal-title" id="exampleModalLabel">

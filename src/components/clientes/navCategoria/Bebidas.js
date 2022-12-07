@@ -344,9 +344,15 @@ const Bebidas = () => {
         <br />
         <div className="row justify-content-center">
           {products.map((item) => (
+<<<<<<< HEAD
             <div className="col-sm-12  col-md-4 col-lg-3" key={item._id}>
               <div className="separacionBebidas card">
                 <img alt="" src={item.imagen} className="tamañoCardBebidas card-img-top img-height" />
+=======
+            <div className="col-3" key={item._id}>
+              <div className="card">
+                <img alt="" src={item.imagen} className="card-img-top img-height" />
+>>>>>>> cdc347a9a713c8b2b26f105d0565bca02ff5cc3a
                 <div className="card-body">
                   <h6 className="card-title">
                     {item.nombreProducto} - $ {item.precioUnitario}
@@ -456,7 +462,11 @@ const Bebidas = () => {
             >
               total Pago
             </button>
+<<<<<<< HEAD
            
+=======
+            <MercadoPago/>
+>>>>>>> cdc347a9a713c8b2b26f105d0565bca02ff5cc3a
             
             <br />
           </div>
