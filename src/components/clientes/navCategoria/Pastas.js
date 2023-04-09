@@ -342,12 +342,15 @@ const Bebidas = () => {
             <p class="bdr2"></p>
         </div>
         <br />
-        <div className="row justify-content-center">
+        <div className="row justify-content-center mx-auto">
           {products.map((item) => (
             <div className="col-sm-12  col-md-4 col-lg-3" key={item._id}>
               <div className="separacionBebidas card">
                 <img alt="" src={item.imagen} className="tamañoCardBebidas card-img-top img-height" />
                 <div className="card-body">
+                <h6 className="card-title">
+                      {" Nombre del Proveedor : " + item.idProveedor.nombreOrazonSocial}
+                 </h6>
                   <h6 className="card-title">
                     {item.nombreProducto} - $ {item.precioUnitario}
                   </h6>

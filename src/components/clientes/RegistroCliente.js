@@ -42,7 +42,7 @@ if(!resp.ok)alert('Revise las credenciales y vuelva a intentar')
 const data = await resp.json()
 
 console.log(data)
-navigate('/productos')
+navigate('/cliente')
 
 })()
 }

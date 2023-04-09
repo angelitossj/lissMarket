@@ -15,100 +15,70 @@ import {
   MDBInput
 }
 from 'mdb-react-ui-kit';
+import { useState } from 'react';
 
 
 
 function App() {
-    const [state,setState] = useContext(Session)
-    const navigate = useNavigate();
-  
-    const InicioSesionExitosa=(token)=>{
-      swal({
-        title:'Inicio de Sesión Exitosa',
-        text:'Bienvenido',
-        icon:'success',
-        timer:'1000',
-        showCancelButton: false,
-        showConfirmButton: false
-      }).then(()=>{
-        //Almacenamiento del token y redirección después de 3 segundos
-       
-  
-      }
-      );
-    }
-  
-      
-  
-      const opciones =  {
-      method:'POST',
-      headers:{'Content-Type': 'application/json'}
-    }
-     
-      //Método para la redirección
-    
-    // const [estado,setEstado]= useState({
-    //   usuario:"",
-    //   password:""
-    // });
-  
-    const {usuario,password}=state
-    const handleInput = ({ target }) => {
-      setState({
-          ...state,
-          [target.name]: target.value
-        })
-        console.log(target.value)
+  const [sessionData, setSessionData] = useContext(Session);
+  const [user, setUser] = useState({ usuario: '', password: '' });
+
+  const navigate = useNavigate();
+
+  const InicioSesionExitosa = (token) => {
+    swal({
+      title: 'Inicio de Sesión Exitosa',
+      text: 'Bienvenido',
+      icon: 'success',
+      timer: '1000',
+      showCancelButton: false,
+      showConfirmButton: false,
+    }).then(() => {
+      //Almacenamiento del token y redirección después de 3 segundos
+    });
   };
+
+  const opciones = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  };
+
+  const handleInput = ({ target }) => {
+    setUser({
+      ...user,
+      [target.name]: target.value,
+    });
+  };
+
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-   
-   
-  
-  
+    e.preventDefault();
+
     (async () => {
-        // Se modifican las opciones del fetch, añadiendo los datos del formulario
-        opciones.body = JSON.stringify({ usuario, password })
-       console.log({usuario})
-  
-        const resp = await fetch('http://localhost:3000/log', opciones)
-  
-        // Si el ok es false, significa que se produjo un error en la petición
-        if (!resp.ok) alert('Revise las credenciales y vuelva a intentarlo');
-       
-  
-        const data = await resp.json()
-  
-        const info = {
-          token:data.token,
-          user:usuario
-        }
-     
-     
-        
-        console.log(data.token);
-        console.log(data.usuario)
-        if (data.token){
-          localStorage.setItem('rstoken',data.token)
-          console.log(localStorage)
-          InicioSesionExitosa(data.token)
-          navigate('/homeCliente');
-        }
-        setState({...state,...info,isLoged:true})
-        
-  
-  
-        
-        
-      
-      
-     
-       
-       
-      
-  
-    })()
-}
+      // Se modifican las opciones del fetch, añadiendo los datos del formulario
+      opciones.body = JSON.stringify({ usuario: user.usuario, password: user.password });
+
+      const resp = await fetch('http://localhost:3000/log', opciones);
+
+      // Si el ok es false, significa que se produjo un error en la petición
+      if (!resp.ok) alert('Revise las credenciales y vuelva a intentarlo');
+
+      const data = await resp.json();
+
+      const info = {
+        token: data.token,
+        user: user.usuario,
+      };
+
+      if (data.token) {
+        localStorage.setItem('rstoken', data.token);
+        InicioSesionExitosa(data.token);
+        navigate('/homeCliente');
+      }
+
+      setUser(info);
+      setSessionData(info);
+    })();
+  };
 
   return (
     <>

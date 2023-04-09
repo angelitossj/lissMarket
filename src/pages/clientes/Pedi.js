@@ -342,12 +342,17 @@ const Bebidas = () => {
             <p class="bdr2"></p>
         </div>
         <br />
-        <div className="row justify-content-center">
+        <div className="row justify-content-center mx-auto">
           {products.map((item) => (
             <div className="col-sm-12  col-md-4 col-lg-3" key={item._id}>
               <div className="separacionBebidas card">
-                <img alt="" src={item.imagen} className="tamañoCardBebidas card-img-top img-height" />
+                <img alt="" src={item.imagen} className="tamañoCardBebidas card-img-top img-height mx-auto" />
                 <div className="card-body">
+                <h6 className="card-title">
+                      {
+                        "Proveedor : " +   item.idProveedor.nombreOrazonSocial
+                      }
+                                        </h6>                 
                   <h6 className="card-title">
                     {item.nombreProducto} - $ {item.precioUnitario}
                   </h6>
@@ -422,7 +427,7 @@ const Bebidas = () => {
                     >
                       +
                     </button> */}
-                    <input onChange={(e)=>console.log(e.target.value)} name="cantidad" type='number'></input>
+                    <button onClick={()=>{increase()}}></button>
                   </td>
                 
                   <td>
